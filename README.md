@@ -11,9 +11,9 @@
 
 ### **복습할 개념 체크 리스트**
 
-- [ ] **Vite와 리액트 설정**
+- [x] **Vite와 리액트 설정**
   - Vite를 사용하여 리액트 프로젝트를 시작하고 구성하는 방법을 복습하세요.
-- [ ] **Redux Toolkit 사용**
+- [x] **Redux Toolkit 사용**
   - `createSlice`, `configureStore`, `createAsyncThunk`를 사용하여 Redux 상태를 관리하고 비동기 데이터 로딩을 처리하는 방법을 복습하세요.
 - [ ] **동적 로딩 (`React.lazy`와 `React.Suspense`)**
   - `React.lazy`를 사용하여 컴포넌트를 동적으로 로드하고, `React.Suspense`를 사용하여 로딩 상태를 처리하는 방법을 복습하세요.
