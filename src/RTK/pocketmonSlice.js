@@ -53,6 +53,7 @@ const fetchPocketmonsThunk = createAsyncThunk(
        */
       const pocketmonData = {
         id: id,
+        name: data.names.find((el) => el.language.name === "ko").name,
         description: data.flavor_text_entries.find(
           (el) => el.language.name === "ko"
         ).flavor_text,
