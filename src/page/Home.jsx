@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
+import Heart from "../components/Heart";
 
 export default function Home() {
   /** @type {import("../type").PocketmonStore} */
@@ -17,6 +18,7 @@ export default function Home() {
             <Link to={`/detail/${pocketmon.id}`} key={pocketmon.id}>
               <img src={pocketmon.frontImage} />
               <span>{pocketmon.name}</span>
+              <Heart />
             </Link>
           ))}
     </div>
