@@ -13,16 +13,10 @@ const loadState = () => {
   }
 };
 
-/**
- *
- * @param {Object} state
- * @param {Array<number>} state.favorites
- */
-
 const saveState = (state) => {
   try {
-    const serializedState = JSON.stringify(state.favorites);
-    localStorage.setItem("todos", serializedState);
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("favorites", serializedState);
   } catch (err) {
     console.error("Could not save state", err);
   }
@@ -43,11 +37,10 @@ export const favoritesSlice = createSlice({
         return newFavorites;
       } else {
         state.push(id);
+        saveState(state);
       }
-
-      saveState(state);
     },
   },
 });
 
-export const { toggleFavorite } = favoritesSlice.reducer;
+export const { toggleFavorite } = favoritesSlice.actions;
