@@ -6,6 +6,7 @@ import Home from "./page/Home";
 import Detail from "./page/Detail";
 import Favorites from "./page/Favorites";
 import Search from "./page/Search";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,10 +16,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/detail/:id" element={<Detail />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/favorites" element={<Favorites />} />
+      <Route element={<Layout />}>
+        {" "}
+        <Route path="/" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Route>
     </Routes>
   );
 }
