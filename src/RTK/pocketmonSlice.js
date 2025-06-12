@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 /**
  *
@@ -31,7 +31,7 @@ const createPocketmonImageUrl = ({ id, isFront = true }) => {
   }
 };
 
-const fetchPocketmonsThunk = createAsyncThunk(
+export const fetchPocketmonsThunk = createAsyncThunk(
   "pocketmon/fetchPocketmons",
   async (maxId) => {
     const numberArray = Array.from({ length: maxId }, (_, i) => i + 1);
@@ -43,6 +43,7 @@ const fetchPocketmonsThunk = createAsyncThunk(
       /**
        * @typedef {Object} PocketmonData
        * @property {number} id
+       * @property {string} name
        * @property {string} description
        * @property {string} frontImage
        * @property {string} backImage
@@ -67,3 +68,29 @@ const fetchPocketmonsThunk = createAsyncThunk(
     return await Promise.all(numberArray.map((id) => fetchPocketmonById(id)));
   }
 );
+
+export const pocketmonSlice = createSlice({
+  name: "pocketmon",
+  initialState: {
+    isLoading: true,
+    isError: false,
+    /** @type {Array<PocketmonData>} */
+    pocketmons: [],
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPocketmonsThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPocketmonsThunk.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(fetchPocketmonsThunk.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = true;
+        state.pocketmons = action.payload;
+      });
+  },
+});

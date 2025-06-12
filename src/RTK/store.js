@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { pocketmonSlice } from "./pocketmonSlice";
 
 export default configureStore({
-  reducer: {},
+  reducer: {
+    pocketmon: pocketmonSlice.reducer,
+  },
 });
