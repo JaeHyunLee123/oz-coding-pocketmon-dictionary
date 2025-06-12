@@ -5,7 +5,7 @@ import { fetchPocketmonsThunk } from "./RTK/pocketmonSlice";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPocketmonsThunk(50));
+    dispatch(fetchPocketmonsThunk(151));
   }, [dispatch]);
 
   return <></>;
