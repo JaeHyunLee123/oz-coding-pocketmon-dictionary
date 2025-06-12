@@ -82,7 +82,7 @@ export const pocketmonSlice = createSlice({
       })
       .addCase(fetchPocketmonsThunk.fulfilled, (state, action) => {
         state.isError = false;
-        state.isLoading = true;
+        state.isLoading = false;
         state.pocketmons = action.payload;
       });
   },
