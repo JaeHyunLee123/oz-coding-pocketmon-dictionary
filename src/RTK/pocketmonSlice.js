@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+/** @typedef {import("../type").PocketmonData} PocketmonData */
+
 /**
  *
  * @param {number} id
@@ -39,15 +41,6 @@ export const fetchPocketmonsThunk = createAsyncThunk(
     const fetchPocketmonById = async (id) => {
       const response = await fetch(createPocketmonSpeciesGetUrl(id));
       const data = await response.json();
-
-      /**
-       * @typedef {Object} PocketmonData
-       * @property {number} id
-       * @property {string} name
-       * @property {string} description
-       * @property {string} frontImage
-       * @property {string} backImage
-       */
 
       /**
        * @type {PocketmonData}
