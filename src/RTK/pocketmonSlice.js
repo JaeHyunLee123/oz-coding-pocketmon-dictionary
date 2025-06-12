@@ -31,7 +31,7 @@ const createPocketmonImageUrl = ({ id, isFront = true }) => {
   }
 };
 
-export const fetchPocketmons = createAsyncThunk(
+const fetchPocketmonsThunk = createAsyncThunk(
   "pocketmon/fetchPocketmons",
   async (maxId) => {
     const numberArray = Array.from({ length: maxId }, (_, i) => i + 1);
