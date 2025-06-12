@@ -25,7 +25,10 @@ export default function Home() {
               className="flex flex-col justify-center items-center"
               key={pocketmon.id}
             >
-              <img src={pocketmon.frontImage} />
+              <Link to={`/detail/${pocketmon.id}`}>
+                <img src={pocketmon.frontImage} />
+              </Link>
+
               <div className="flex justify-center items-center gap-2">
                 <span>{pocketmon.name}</span>
                 <button
@@ -35,6 +38,7 @@ export default function Home() {
                 >
                   <Heart
                     fill={favorites.includes(pocketmon.id) ? "red" : "none"}
+                    className="hover:cursor-pointer"
                   />
                 </button>
               </div>
