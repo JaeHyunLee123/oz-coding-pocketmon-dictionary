@@ -18,7 +18,7 @@ export default function PocketmonCard({ pocketmon }) {
   const dispatch = useDispatch();
 
   return (
-    <div
+    <section
       className="flex flex-col justify-center items-center"
       key={pocketmon.id}
     >
@@ -39,6 +39,6 @@ export default function PocketmonCard({ pocketmon }) {
           />
         </button>
       </div>
-    </div>
+    </section>
   );
 }
