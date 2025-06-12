@@ -1,3 +1,24 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router";
+
 export default function Home() {
-  return <div>Main</div>;
+  /** @type {import("../type").PocketmonStore} */
+  const { isLoading, isError, pocketmons } = useSelector(
+    (state) => state.pocketmon
+  );
+
+  return (
+    <div className="flex justify-center flex-wrap gap-5">
+      {isLoading
+        ? "Loading..."
+        : isError
+        ? "Error try again"
+        : pocketmons.map((pocketmon) => (
+            <Link to={`/detail/${pocketmon.id}`} key={pocketmon.id}>
+              <img src={pocketmon.frontImage} />
+              <span>{pocketmon.name}</span>
+            </Link>
+          ))}
+    </div>
+  );
 }

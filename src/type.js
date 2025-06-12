@@ -7,4 +7,11 @@
  * @property {string} backImage
  */
 
+/**
+ * @typedef {Object} PocketmonStore
+ * @property {Array<PocketmonData>} pocketmons
+ * @property {boolean} isLoading
+ * @property {boolean} isError
+ */
+
 export {};
