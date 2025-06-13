@@ -40,10 +40,12 @@ export default function Search() {
           <Loading />
         ) : isError ? (
           "Error try again"
-        ) : (
+        ) : searchingPocketmon.length > 0 ? (
           searchingPocketmon.map((pocketmon) => (
             <PocketmonCard pocketmon={pocketmon} key={pocketmon.id} />
           ))
+        ) : (
+          "검색어에 매칭되는 포켓몬이 없습니다."
         )}
       </div>
     </div>
