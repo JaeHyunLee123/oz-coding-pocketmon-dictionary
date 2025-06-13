@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../RTK/favoriteSlice";
 import Heart from "./Heart";
 import { Link } from "react-router";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 /**
  * @param {PocketmonCardProps} props
  */
-export default function PocketmonCard({ pocketmon }) {
+function PocketmonCardComponent({ pocketmon }) {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   /** @type {Array<number>} */
@@ -53,3 +53,7 @@ export default function PocketmonCard({ pocketmon }) {
     </section>
   );
 }
+
+const PocketmonCard = memo(PocketmonCardComponent);
+
+export default PocketmonCard;
