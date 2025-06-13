@@ -5,7 +5,9 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="bg-neutral-400 min-h-screen p-8">
+        <Outlet />
+      </div>
     </>
   );
 }
