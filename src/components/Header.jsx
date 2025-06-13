@@ -7,7 +7,7 @@ export default function Header() {
   const onSearchInputChange = (event) => {
     const searchTerm = event.target.value;
 
-    navigate(`search?qeury=${searchTerm}`);
+    navigate(`search?query=${searchTerm}`);
   };
 
   return (
