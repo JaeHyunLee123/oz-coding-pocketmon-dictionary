@@ -22,7 +22,7 @@ function PocketmonCardComponent({ pocketmon }) {
 
   return (
     <section
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center bg-white px-3 py-2 rounded-2xl border-b-4 border-r-4 transition-transform  ease-in-out hover:scale-105"
       key={pocketmon.id}
     >
       <Link to={`/detail/${pocketmon.id}`}>
