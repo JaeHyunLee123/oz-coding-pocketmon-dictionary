@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 import PocketmonCard from "../components/PocketmonCard";
 import { useSelector } from "react-redux";
+import Loading from "../components/Loading";
 
 export default function Search() {
   const searchParam = useSearchParams()[0].get("query");
@@ -35,13 +36,15 @@ export default function Search() {
   return (
     <div>
       <div className="flex justify-center flex-wrap gap-5">
-        {isLoading
-          ? "Loading..."
-          : isError
-          ? "Error try again"
-          : searchingPocketmon.map((pocketmon) => (
-              <PocketmonCard pocketmon={pocketmon} key={pocketmon.id} />
-            ))}
+        {isLoading ? (
+          <Loading />
+        ) : isError ? (
+          "Error try again"
+        ) : (
+          searchingPocketmon.map((pocketmon) => (
+            <PocketmonCard pocketmon={pocketmon} key={pocketmon.id} />
+          ))
+        )}
       </div>
     </div>
   );

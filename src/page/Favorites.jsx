@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PocketmonCard from "../components/PocketmonCard";
+import Loading from "../components/Loading";
 
 export default function Favorites() {
   const [favoritePocketmons, setFavoritePocketmons] = useState([]);
@@ -23,13 +24,15 @@ export default function Favorites() {
 
   return (
     <div className="flex justify-center flex-wrap gap-5">
-      {isLoading
-        ? "Loading..."
-        : isError
-        ? "Error try again"
-        : favoritePocketmons.map((pocketmon) => (
-            <PocketmonCard pocketmon={pocketmon} key={pocketmon.id} />
-          ))}
+      {isLoading ? (
+        <Loading />
+      ) : isError ? (
+        "Error try again"
+      ) : (
+        favoritePocketmons.map((pocketmon) => (
+          <PocketmonCard pocketmon={pocketmon} key={pocketmon.id} />
+        ))
+      )}
     </div>
   );
 }

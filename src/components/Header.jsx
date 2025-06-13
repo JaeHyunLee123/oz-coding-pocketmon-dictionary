@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import MagnifyingGlass from "./MagnifyingGlass";
+import Loading from "./Loading";
 
 export default function Header() {
   const navigate = useNavigate();

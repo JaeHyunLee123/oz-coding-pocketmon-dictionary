@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { toggleFavorite } from "../RTK/favoriteSlice";
 import Heart from "../components/Heart";
+import Loading from "../components/Loading";
 
 export default function Detail() {
   const [pocketmon, setPocketmon] = useState();
@@ -27,7 +28,7 @@ export default function Detail() {
   return (
     <div>
       {isLoading ? (
-        "Loading..."
+        <Loading />
       ) : isError ? (
         "Error try again"
       ) : pocketmon ? (
