@@ -17,7 +17,13 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center w-full h-full">
+          <Loading />
+        </div>
+      }
+    >
       <Routes>
         <Route element={<Layout />}>
           {" "}
