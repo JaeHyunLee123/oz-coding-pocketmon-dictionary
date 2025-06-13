@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchPocketmonsThunk } from "./RTK/pocketmonSlice";
 import { Route, Routes } from "react-router";
-import Home from "./page/Home";
-import Detail from "./page/Detail";
-import Favorites from "./page/Favorites";
-import Search from "./page/Search";
 import Layout from "./components/Layout";
+import Loading from "./components/Loading";
+
+const Home = lazy(() => import("./page/Home"));
+const Detail = lazy(() => import("./page/Detail"));
+const Favorites = lazy(() => import("./page/Favorites"));
+const Search = lazy(() => import("./page/Search"));
 
 function App() {
   const dispatch = useDispatch();
@@ -15,15 +17,17 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        {" "}
-        <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<Layout />}>
+          {" "}
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
