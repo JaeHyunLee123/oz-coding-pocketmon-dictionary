@@ -26,23 +26,15 @@ export default function Detail() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex justify-center">
       {isLoading ? (
         <Loading />
       ) : isError ? (
         "Error try again"
       ) : pocketmon ? (
-        <div className="flex flex-col justify-center items-center">
-          <button
-            onClick={() => {
-              setIsFront(!isFront);
-            }}
-            className="hover:cursor-pointer"
-          >
-            <img src={isFront ? pocketmon.frontImage : pocketmon.backImage} />
-          </button>
-          <div className="flex justify-center items-center gap-2">
-            <span>{pocketmon.name}</span>
+        <div className="flex flex-col justify-center items-center p-10 w-96 space-y-4 bg-white rounded-2xl border-b-4 border-r-4">
+          <div className="flex justify-center items-center ">
+            <h1 className="text-3xl">{pocketmon.name}</h1>
             <button
               onClick={() => {
                 dispatch(toggleFavorite(pocketmon.id));
@@ -54,7 +46,30 @@ export default function Detail() {
               />
             </button>
           </div>
-          <p>{pocketmon.description}</p>
+          <p className="text-center">{pocketmon.description}</p>
+          <div className="relative">
+            <img
+              src={pocketmon.frontImage}
+              className={`absolute transform-3d backface-hidden transition-transform scale-150 ${
+                isFront ? "rotate-y-0" : "rotate-y-180"
+              }`}
+            />
+            <img
+              src={pocketmon.backImage}
+              className={`transform-3d backface-hidden transition-transform scale-150 ${
+                isFront ? "rotate-y-180" : "rotate-y-0"
+              }`}
+            />
+          </div>
+
+          <button
+            onClick={() => {
+              setIsFront(!isFront);
+            }}
+            className="hover:cursor-pointer"
+          >
+            뒤집기
+          </button>
         </div>
       ) : null}
     </div>
